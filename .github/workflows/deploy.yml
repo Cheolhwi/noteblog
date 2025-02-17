@@ -23,10 +23,11 @@ jobs:
       - name: Install Dependencies
         run: npm install
 
-      - name: Ensure Theme Exists
+      - name: Install Cactus Theme
         run: |
-          git submodule update --init --recursive
-          ls -l themes/
+          rm -rf themes/cactus
+          git clone https://github.com/probberechts/hexo-theme-cactus.git themes/cactus
+
   
 
       - name: Install Hexo Git Deployer
