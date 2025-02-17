@@ -27,11 +27,12 @@ jobs:
         run: |
           rm -rf themes/cactus
           git clone https://github.com/probberechts/hexo-theme-cactus.git themes/cactus
+          rm -rf themes/cactus/.git  # 关键：删除 .git 目录，防止 Git 保护报错
 
-      - name: Remove About Section & Social Links from index.ejs
+      - name: Remove Social Links & About Section
         run: |
           sed -i '/<section id="about"/,/<\/section>/d' themes/cactus/layout/_partial/index.ejs
-          sed -i '/<% if (theme.social_links)/,/<\/p>/d' themes/cactus/layout/_partial/index.ejs
+
 
       - name: Clean and Generate Static Files
         run: |
