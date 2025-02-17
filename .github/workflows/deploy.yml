@@ -26,7 +26,7 @@ jobs:
       - name: Install Cactus Theme
         run: |
           rm -rf themes/cactus
-          git clone https://github.com/probberechts/hexo-theme-cactus.git themes/cactus
+          git clone https://github.com/Cheolhwi/hexo-theme-cactus.git themes/cactus
 
   
 
