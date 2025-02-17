@@ -13,7 +13,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
         with:
-          submodules: false  # 不使用子模块
+          submodules: false  # 禁用子模块检查
 
       - name: Setup Node.js
         uses: actions/setup-node@v2
@@ -27,12 +27,11 @@ jobs:
         run: |
           rm -rf themes/cactus
           git clone https://github.com/probberechts/hexo-theme-cactus.git themes/cactus
-          rm -rf themes/cactus/.git  # 关键：删除 .git 目录，防止 Git 保护报错
 
-      - name: Remove Social Links & About Section
+      - name: Install Hexo Git Deployer
         run: |
-          sed -i '/<section id="about"/,/<\/section>/d' themes/cactus/layout/_partial/index.ejs
-
+          npm install hexo-deployer-git --save
+          npm install hexo-cli -g
 
       - name: Clean and Generate Static Files
         run: |
@@ -52,6 +51,6 @@ jobs:
           git init
           git add -A
           git commit -m "Deploy Hexo site via GitHub Actions"
-          git branch -M gh-pages
+          git branch -M gh-pages  # 确保使用 gh-pages 作为默认分支
           git remote add origin https://x-access-token:${{ secrets.GH_TOKEN }}@github.com/${{ github.repository }}.git
           git push -u origin gh-pages --force
