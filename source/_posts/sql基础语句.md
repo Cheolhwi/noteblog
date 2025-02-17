@@ -174,3 +174,14 @@ SELECT * FROM products
  
 ```
 
+### Structuring语句
+
+#### LIMIT
+
+```mysql
+SELECT * FROM products
+    WHERE product_name LIKE '%berry%'
+    LIMIT 50;
+/* 限制显示50条数据 */
+```
+
