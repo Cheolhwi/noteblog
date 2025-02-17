@@ -2,7 +2,7 @@
 title: SqlCrud语句
 date: 2025-02-10 21:59:51
 tags: sql学习
-
+toc: true
 ---
 
 ### 基础语句
