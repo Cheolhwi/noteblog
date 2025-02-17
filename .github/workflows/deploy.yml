@@ -45,6 +45,7 @@ jobs:
           cd public/
           git init
           git add -A
-          git commit -m "Create by workflows"
-          git remote add origin https://${{ secrets.GH_TOKEN }}@github.com/cheolhwi/noteblog.git
-          git push origin HEAD:gh-pages -f
+          git commit -m "Deploy Hexo site via GitHub Actions"
+          git branch -M gh-pages  # 确保使用 gh-pages 作为默认分支
+          git remote add origin https://x-access-token:${{ secrets.GH_TOKEN }}@github.com/${{ github.repository }}.git
+          git push -u origin gh-pages --force
