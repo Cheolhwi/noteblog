@@ -5,6 +5,8 @@ tags: sql学习
 toc: true
 ---
 
+[toc]
+
 ### 基础语句
 
 #### create/alter table
