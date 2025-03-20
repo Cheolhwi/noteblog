@@ -5,6 +5,10 @@ tags: python学习
 toc: true
 ---
 
+[TOC]
+
+
+
 ## List
 
 ### 1. List 的创建
