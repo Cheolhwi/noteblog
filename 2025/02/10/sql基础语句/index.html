@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="[toc] 基础语句create&#x2F;alter tableCreate table: 12345678910111213CREATE TABLE departments (    id INTEGER PRIMARY KEY,    department_name TEXT NOT NULL);CREATE TABLE employees (    id INTEGER PRIMARY K">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SqlCrud语句">
+<meta property="og:url" content="https://cheolhwi.github.io/noteblog/2025/02/10/sql%E5%9F%BA%E7%A1%80%E8%AF%AD%E5%8F%A5/index.html">
+<meta property="og:site_name" content="CheolhwiNote">
+<meta property="og:description" content="[toc] 基础语句create&#x2F;alter tableCreate table: 12345678910111213CREATE TABLE departments (    id INTEGER PRIMARY KEY,    department_name TEXT NOT NULL);CREATE TABLE employees (    id INTEGER PRIMARY K">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2025-02-10T21:59:51.000Z">
+<meta property="article:modified_time" content="2025-03-20T10:54:19.145Z">
+<meta property="article:author" content="cheolhwi">
+<meta property="article:tag" content="sql学习">
+<meta name="twitter:card" content="summary">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/noteblog/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/noteblog/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/noteblog/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>SqlCrud语句</title>
+    <!-- async scripts -->
+    <!-- Google Analytics -->
+
+
+    <!-- Umami Analytics -->
+
+
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/noteblog/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa-solid fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/noteblog/">Home</a></li><!--
+     --><!--
+       --><li><a href="/noteblog/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/noteblog/archives/">Writing</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="http://github.com/probberechts">Projects</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" aria-label="Previous post" href="/noteblog/2025/03/20/python%E8%AF%AD%E6%B3%95/"><i class="fa-solid fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" aria-label="Back to top" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post" href="#"><i class="fa-solid fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://cheolhwi.github.io/noteblog/2025/02/10/sql%E5%9F%BA%E7%A1%80%E8%AF%AD%E5%8F%A5/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://cheolhwi.github.io/noteblog/2025/02/10/sql%E5%9F%BA%E7%A1%80%E8%AF%AD%E5%8F%A5/&text=SqlCrud语句"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://cheolhwi.github.io/noteblog/2025/02/10/sql%E5%9F%BA%E7%A1%80%E8%AF%AD%E5%8F%A5/&title=SqlCrud语句"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://cheolhwi.github.io/noteblog/2025/02/10/sql%E5%9F%BA%E7%A1%80%E8%AF%AD%E5%8F%A5/&is_video=false&description=SqlCrud语句"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=SqlCrud语句&body=Check out this article: https://cheolhwi.github.io/noteblog/2025/02/10/sql%E5%9F%BA%E7%A1%80%E8%AF%AD%E5%8F%A5/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://cheolhwi.github.io/noteblog/2025/02/10/sql%E5%9F%BA%E7%A1%80%E8%AF%AD%E5%8F%A5/&title=SqlCrud语句"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://cheolhwi.github.io/noteblog/2025/02/10/sql%E5%9F%BA%E7%A1%80%E8%AF%AD%E5%8F%A5/&title=SqlCrud语句"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://cheolhwi.github.io/noteblog/2025/02/10/sql%E5%9F%BA%E7%A1%80%E8%AF%AD%E5%8F%A5/&title=SqlCrud语句"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://cheolhwi.github.io/noteblog/2025/02/10/sql%E5%9F%BA%E7%A1%80%E8%AF%AD%E5%8F%A5/&title=SqlCrud语句"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://cheolhwi.github.io/noteblog/2025/02/10/sql%E5%9F%BA%E7%A1%80%E8%AF%AD%E5%8F%A5/&name=SqlCrud语句&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://cheolhwi.github.io/noteblog/2025/02/10/sql%E5%9F%BA%E7%A1%80%E8%AF%AD%E5%8F%A5/&t=SqlCrud语句"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    
+    
+      <div id="toc">
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80%E8%AF%AD%E5%8F%A5"><span class="toc-number">1.</span> <span class="toc-text">基础语句</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#create-alter-table"><span class="toc-number">1.1.</span> <span class="toc-text">create&#x2F;alter table</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#insert"><span class="toc-number">1.2.</span> <span class="toc-text">insert</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#delete"><span class="toc-number">1.3.</span> <span class="toc-text">delete</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#update"><span class="toc-number">1.4.</span> <span class="toc-text">update</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Queries%E8%AF%AD%E5%8F%A5"><span class="toc-number">2.</span> <span class="toc-text">Queries语句</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#where%E6%9D%A1%E4%BB%B6"><span class="toc-number">2.1.</span> <span class="toc-text">where条件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#AS"><span class="toc-number">2.2.</span> <span class="toc-text">AS</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#IIF"><span class="toc-number">2.3.</span> <span class="toc-text">IIF</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#between"><span class="toc-number">2.4.</span> <span class="toc-text">between</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#distinct"><span class="toc-number">2.5.</span> <span class="toc-text">distinct</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#and"><span class="toc-number">2.6.</span> <span class="toc-text">and</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#or"><span class="toc-number">2.7.</span> <span class="toc-text">or</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#in"><span class="toc-number">2.8.</span> <span class="toc-text">in</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#like"><span class="toc-number">2.9.</span> <span class="toc-text">like</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Structuring%E8%AF%AD%E5%8F%A5"><span class="toc-number">3.</span> <span class="toc-text">Structuring语句</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#LIMIT"><span class="toc-number">3.1.</span> <span class="toc-text">LIMIT</span></a></li></ol></li></ol>
+      </div>
+    
+  </span>
+</div>
+
+    
+    <div class="content index py4 ">
+        
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle p-name" itemprop="name headline">
+        SqlCrud语句
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author p-author h-card" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span class="p-name" itemprop="name">cheolhwi</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2025-02-10T21:59:51.000Z" class="dt-published" itemprop="datePublished">2025-02-10</time>
+        
+      
+    </div>
+
+
+      
+
+      
+    <div class="article-tag">
+        <i class="fa-solid fa-tag"></i>
+        <a class="p-category" href="/noteblog/tags/sql%E5%AD%A6%E4%B9%A0/" rel="tag">sql学习</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content e-content" itemprop="articleBody">
+    <p>[toc]</p>
+<h3 id="基础语句"><a href="#基础语句" class="headerlink" title="基础语句"></a>基础语句</h3><h4 id="create-alter-table"><a href="#create-alter-table" class="headerlink" title="create&#x2F;alter table"></a>create&#x2F;alter table</h4><p>Create table:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE departments (</span><br><span class="line">    id INTEGER PRIMARY KEY,</span><br><span class="line">    department_name TEXT NOT NULL</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line">CREATE TABLE employees (</span><br><span class="line">    id INTEGER PRIMARY KEY,</span><br><span class="line">    name TEXT NOT NULL,</span><br><span class="line">    department_id INTEGER,</span><br><span class="line">    CONSTRAINT fk_departments</span><br><span class="line">    FOREIGN KEY (department_id)</span><br><span class="line">    REFERENCES departments(id)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<p>alter table:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* rename */</span></span><br><span class="line"><span class="keyword">ALTER TABLE</span> employees</span><br><span class="line">RENAME <span class="keyword">TO</span> contractors;</span><br><span class="line"></span><br><span class="line"><span class="keyword">ALTER TABLE</span> contractors</span><br><span class="line">RENAME <span class="keyword">COLUMN</span> salary <span class="keyword">TO</span> invoice;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*add and drop*/</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">ALTER TABLE</span> contractors</span><br><span class="line"><span class="keyword">ADD</span> <span class="keyword">COLUMN</span> job_title TEXT;</span><br><span class="line"></span><br><span class="line"><span class="keyword">ALTER TABLE</span> contractors</span><br><span class="line"><span class="keyword">DROP</span> <span class="keyword">COLUMN</span> is_manager;</span><br></pre></td></tr></table></figure>
+
+<h4 id="insert"><a href="#insert" class="headerlink" title="insert"></a>insert</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">INSERT INTO</span> employees(id, name, title)</span><br><span class="line"><span class="keyword">VALUES</span> (<span class="number">1</span>, <span class="string">&#x27;Allan&#x27;</span>, <span class="string">&#x27;Engineer&#x27;</span>);</span><br></pre></td></tr></table></figure>
+
+<h4 id="delete"><a href="#delete" class="headerlink" title="delete"></a>delete</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DELETE</span> <span class="keyword">FROM</span> employees</span><br><span class="line">    <span class="keyword">WHERE</span> id <span class="operator">=</span> <span class="number">251</span>;</span><br></pre></td></tr></table></figure>
+
+<h4 id="update"><a href="#update" class="headerlink" title="update"></a>update</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">UPDATE</span> employees</span><br><span class="line"><span class="keyword">SET</span> job_title <span class="operator">=</span> <span class="string">&#x27;Backend Engineer&#x27;</span>, salary <span class="operator">=</span> <span class="number">150000</span></span><br><span class="line"><span class="keyword">WHERE</span> id <span class="operator">=</span> <span class="number">251</span>;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Queries语句"><a href="#Queries语句" class="headerlink" title="Queries语句"></a>Queries语句</h3><h4 id="where条件"><a href="#where条件" class="headerlink" title="where条件"></a>where条件</h4><p>where语句后可以跟随条件</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> name <span class="keyword">FROM</span> users <span class="keyword">WHERE</span> power_level <span class="operator">&gt;=</span> <span class="number">9000</span>;</span><br><span class="line"><span class="keyword">SELECT</span> name <span class="keyword">FROM</span> users <span class="keyword">WHERE</span> first_name <span class="keyword">IS</span> <span class="keyword">NULL</span>;</span><br></pre></td></tr></table></figure>
+
+<h4 id="AS"><a href="#AS" class="headerlink" title="AS"></a>AS</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> employee_id <span class="keyword">AS</span> id, employee_name <span class="keyword">AS</span> name</span><br><span class="line"><span class="keyword">FROM</span> employees;</span><br></pre></td></tr></table></figure>
+
+<h4 id="IIF"><a href="#IIF" class="headerlink" title="IIF"></a>IIF</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> quantity,</span><br><span class="line">    IIF(quantity <span class="operator">&lt;</span> <span class="number">10</span>, <span class="string">&#x27;Order more&#x27;</span>, <span class="string">&#x27;In Stock&#x27;</span>) <span class="keyword">AS</span> directive</span><br><span class="line">    <span class="keyword">FROM</span> products;</span><br><span class="line"> <span class="comment">/* quantitiy&lt;10 = true,则新建的directive column为Order more,否则为 In Stock */</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="between"><a href="#between" class="headerlink" title="between"></a>between</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> employee_name, salary</span><br><span class="line"><span class="keyword">FROM</span> employees</span><br><span class="line"><span class="keyword">WHERE</span> salary <span class="keyword">BETWEEN</span> <span class="number">30000</span> <span class="keyword">and</span> <span class="number">60000</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> product_name, quantity</span><br><span class="line"><span class="keyword">FROM</span> products</span><br><span class="line"><span class="keyword">WHERE</span> quantity <span class="keyword">NOT</span> <span class="keyword">BETWEEN</span> <span class="number">20</span> <span class="keyword">and</span> <span class="number">100</span>;</span><br></pre></td></tr></table></figure>
+
+<h4 id="distinct"><a href="#distinct" class="headerlink" title="distinct"></a>distinct</h4><p>查找非重复的值</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">DISTINCT</span> previous_company</span><br><span class="line">    <span class="keyword">FROM</span> employees;</span><br></pre></td></tr></table></figure>
+
+<h4 id="and"><a href="#and" class="headerlink" title="and"></a>and</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> product_name, quantity, shipment_status</span><br><span class="line">    <span class="keyword">FROM</span> products</span><br><span class="line">    <span class="keyword">WHERE</span> shipment_status <span class="operator">=</span> <span class="string">&#x27;pending&#x27;</span></span><br><span class="line">    <span class="keyword">AND</span> quantity <span class="keyword">BETWEEN</span> <span class="number">0</span> <span class="keyword">and</span> <span class="number">10</span>;</span><br></pre></td></tr></table></figure>
+
+<h4 id="or"><a href="#or" class="headerlink" title="or"></a>or</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> product_name, quantity, shipment_status</span><br><span class="line">    <span class="keyword">FROM</span> products</span><br><span class="line">    <span class="keyword">WHERE</span> shipment_status <span class="operator">=</span> <span class="string">&#x27;out of stock&#x27;</span></span><br><span class="line">    <span class="keyword">OR</span> quantity <span class="keyword">BETWEEN</span> <span class="number">10</span> <span class="keyword">and</span> <span class="number">100</span>;</span><br></pre></td></tr></table></figure>
+
+<h4 id="in"><a href="#in" class="headerlink" title="in"></a>in</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> product_name, shipment_status</span><br><span class="line">    <span class="keyword">FROM</span> products</span><br><span class="line">    <span class="keyword">WHERE</span> shipment_status <span class="keyword">IN</span> (<span class="string">&#x27;shipped&#x27;</span>, <span class="string">&#x27;preparing&#x27;</span>, <span class="string">&#x27;out of stock&#x27;</span>);</span><br><span class="line">    </span><br><span class="line"> <span class="comment">/* 其实等于执行了以下语句*/</span></span><br><span class="line"> <span class="keyword">SELECT</span> product_name, shipment_status</span><br><span class="line">    <span class="keyword">FROM</span> products</span><br><span class="line">    <span class="keyword">WHERE</span> shipment_status <span class="operator">=</span> <span class="string">&#x27;shipped&#x27;</span></span><br><span class="line">        <span class="keyword">OR</span> shipment_status <span class="operator">=</span> <span class="string">&#x27;preparing&#x27;</span></span><br><span class="line">        <span class="keyword">OR</span> shipment_status <span class="operator">=</span> <span class="string">&#x27;out of stock&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<h4 id="like"><a href="#like" class="headerlink" title="like"></a>like</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* starts with banana */</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> products</span><br><span class="line"><span class="keyword">WHERE</span> product_name <span class="keyword">LIKE</span> <span class="string">&#x27;banana%&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* ends with banana*/</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> products</span><br><span class="line"><span class="keyword">WHERE</span> product_name <span class="keyword">LIKE</span> <span class="string">&#x27;%banana&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* contains banana */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> products</span><br><span class="line"><span class="keyword">WHERE</span> product_name <span class="keyword">LIKE</span> <span class="string">&#x27;%banana%&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*占位，有几个下划线就表示有几个待匹配字符，如下则表示4个字符且结尾为oot*/</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> products</span><br><span class="line">    <span class="keyword">WHERE</span> product_name <span class="keyword">LIKE</span> <span class="string">&#x27;_oot&#x27;</span>;</span><br><span class="line">    </span><br><span class="line"> </span><br></pre></td></tr></table></figure>
+
+<h3 id="Structuring语句"><a href="#Structuring语句" class="headerlink" title="Structuring语句"></a>Structuring语句</h3><h4 id="LIMIT"><a href="#LIMIT" class="headerlink" title="LIMIT"></a>LIMIT</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM products</span><br><span class="line">    WHERE product_name LIKE &#x27;%berry%&#x27;</span><br><span class="line">    LIMIT 50;</span><br><span class="line">/* 限制显示50条数据 */</span><br></pre></td></tr></table></figure>
+<p>test</p>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+        
+          <li><a href="/noteblog/">Home</a></li>
+        
+          <li><a href="/noteblog/about/">About</a></li>
+        
+          <li><a href="/noteblog/archives/">Writing</a></li>
+        
+          <li><a target="_blank" rel="noopener" href="http://github.com/probberechts">Projects</a></li>
+        
+      </ul>
+    </div>
+
+    
+    
+      <div id="toc-footer" style="display: none">
+        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80%E8%AF%AD%E5%8F%A5"><span class="toc-number">1.</span> <span class="toc-text">基础语句</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#create-alter-table"><span class="toc-number">1.1.</span> <span class="toc-text">create&#x2F;alter table</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#insert"><span class="toc-number">1.2.</span> <span class="toc-text">insert</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#delete"><span class="toc-number">1.3.</span> <span class="toc-text">delete</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#update"><span class="toc-number">1.4.</span> <span class="toc-text">update</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Queries%E8%AF%AD%E5%8F%A5"><span class="toc-number">2.</span> <span class="toc-text">Queries语句</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#where%E6%9D%A1%E4%BB%B6"><span class="toc-number">2.1.</span> <span class="toc-text">where条件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#AS"><span class="toc-number">2.2.</span> <span class="toc-text">AS</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#IIF"><span class="toc-number">2.3.</span> <span class="toc-text">IIF</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#between"><span class="toc-number">2.4.</span> <span class="toc-text">between</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#distinct"><span class="toc-number">2.5.</span> <span class="toc-text">distinct</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#and"><span class="toc-number">2.6.</span> <span class="toc-text">and</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#or"><span class="toc-number">2.7.</span> <span class="toc-text">or</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#in"><span class="toc-number">2.8.</span> <span class="toc-text">in</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#like"><span class="toc-number">2.9.</span> <span class="toc-text">like</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Structuring%E8%AF%AD%E5%8F%A5"><span class="toc-number">3.</span> <span class="toc-text">Structuring语句</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#LIMIT"><span class="toc-number">3.1.</span> <span class="toc-text">LIMIT</span></a></li></ol></li></ol>
+      </div>
+    
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://cheolhwi.github.io/noteblog/2025/02/10/sql%E5%9F%BA%E7%A1%80%E8%AF%AD%E5%8F%A5/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://cheolhwi.github.io/noteblog/2025/02/10/sql%E5%9F%BA%E7%A1%80%E8%AF%AD%E5%8F%A5/&text=SqlCrud语句"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://cheolhwi.github.io/noteblog/2025/02/10/sql%E5%9F%BA%E7%A1%80%E8%AF%AD%E5%8F%A5/&title=SqlCrud语句"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://cheolhwi.github.io/noteblog/2025/02/10/sql%E5%9F%BA%E7%A1%80%E8%AF%AD%E5%8F%A5/&is_video=false&description=SqlCrud语句"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=SqlCrud语句&body=Check out this article: https://cheolhwi.github.io/noteblog/2025/02/10/sql%E5%9F%BA%E7%A1%80%E8%AF%AD%E5%8F%A5/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://cheolhwi.github.io/noteblog/2025/02/10/sql%E5%9F%BA%E7%A1%80%E8%AF%AD%E5%8F%A5/&title=SqlCrud语句"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://cheolhwi.github.io/noteblog/2025/02/10/sql%E5%9F%BA%E7%A1%80%E8%AF%AD%E5%8F%A5/&title=SqlCrud语句"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://cheolhwi.github.io/noteblog/2025/02/10/sql%E5%9F%BA%E7%A1%80%E8%AF%AD%E5%8F%A5/&title=SqlCrud语句"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://cheolhwi.github.io/noteblog/2025/02/10/sql%E5%9F%BA%E7%A1%80%E8%AF%AD%E5%8F%A5/&title=SqlCrud语句"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://cheolhwi.github.io/noteblog/2025/02/10/sql%E5%9F%BA%E7%A1%80%E8%AF%AD%E5%8F%A5/&name=SqlCrud语句&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://cheolhwi.github.io/noteblog/2025/02/10/sql%E5%9F%BA%E7%A1%80%E8%AF%AD%E5%8F%A5/&t=SqlCrud语句"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        
+          <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa-solid fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2016-2025
+    cheolhwi
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/noteblog/">Home</a></li><!--
+     --><!--
+       --><li><a href="/noteblog/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/noteblog/archives/">Writing</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="http://github.com/probberechts">Projects</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script>
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="fa-regular fa-clone"></i>';
+    btn += '</span>';
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/noteblog/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+</body>
+</html>
